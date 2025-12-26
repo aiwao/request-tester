@@ -21,4 +21,9 @@ app.all("/", async (c) => {
   return c.text(res.join("\n"))
 })
 
+app.get("/timeout", async (c) => {
+  await new Promise(resolve => setTimeout(resolve, 15000));
+  return c.text("OK", 200)
+})
+
 export default app
